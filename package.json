@@ -1,7 +1,7 @@
 {
   "name": "Bondy",
-  "version": "0.0.4",
-  "lastComment": "Update",
+  "version": "0.0.5",
+  "lastComment": "Update : Add livereload",
   "description": "Free One Page Bootstrap Template",
   "main": "app/index.html",
   "dependencies": {

@@ -1,4 +1,5 @@
 'use strict';
+
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -16,21 +17,21 @@ module.exports = function(grunt) {
 			}
 		},
 		shell: {
-	        git_add: {
-	            command: 'git add -A'
-	        },
-	        git_commit: {
-	            command: 'git commit -m "<%= pkg.name %> - <%= pkg.lastComment %>"'
-	        },
-	        git_push: {
-	            options: {
-	                stdout: true
-	            },
-	            command: 'git push'
-	        },
-	        shutdown: {
-	            command: 'shutdown /p'
-	        }
+      git_add: {
+          command: 'git add -A'
+      },
+      git_commit: {
+          command: 'git commit -m "<%= pkg.name %> - <%= pkg.lastComment %>"'
+      },
+      git_push: {
+          options: {
+              stdout: true
+          },
+          command: 'git push'
+      },
+      shutdown: {
+          command: 'shutdown /p'
+      }
 		},
 		'ftp-deploy': {
 		  build: {
@@ -45,21 +46,27 @@ module.exports = function(grunt) {
 		  }
 		},
 		backup: {
-		    root_backup: {
-		      	src: '.',
-		      	dest: '../<%= pkg.name %>.tgz'
-		    },
+	    root_backup: {
+	      	src: '.',
+	      	dest: '../<%= pkg.name %>.tgz'
+	    },
 		},
-	    watch: {
-	    	options: { livereload: true },
-	      	sass: {
-	        	files: ['app/sass/styles.scss'],
-	        	tasks: ['newer:sass:dist'],
-	      	}
-	    },
-	    bumpup: {
-	        file: 'package.json'
-	    },
+    watch: {
+    	options: { livereload: true },
+    	sass: {
+      	files: ['app/sass/styles.scss'],
+      	tasks: ['newer:sass:dist']
+    	},
+			html: {
+				files: ['app/index.html'],
+				options: {
+					livereload: 35730
+				}
+			}
+    },
+    bumpup: {
+        file: 'package.json'
+    },
 		connect: {
 			server: {
 				options: {
@@ -74,7 +81,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	
+
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-shell');
