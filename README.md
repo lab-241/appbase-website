@@ -1,17 +1,8 @@
-## Bondy Free Multi Purpose Bootstrap 3 One Page
+## App base : web site
 
-Bondy is a free fully responsive Bootstrap 3 template multi-purpose for any upcoming project. 
-The template comes with developer friendly and easy customizable code. It works with all main web browsers "IE8+", Tablets and mobile phones.
+The presentation site of [App base](http://appbase.ga) project.
 
-Template Link & Preview [Bondy Preview](http://www.scoopthemes.com/templates/Bondy-Theme/)
-
-### Author
-
-Built with all the love in the world by Scoop Themes.
-
-Check more of our open source templates and themes [http://scoopthemes.com](http://scoopthemes.com).
-
-Follow us on twitter and stay tuned for any upcoming free items [@ScoopThemes](https://twitter.com/ScoopThemes).
+Build with [Scoop theme : Bondy](http://www.scoopthemes.com/templates/Bondy-Theme/)
 
 ## Features
 

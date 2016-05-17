@@ -1,7 +1,7 @@
 {
   "name": "Bondy",
-  "version": "0.0.3",
-  "lastComment": "updates",
+  "version": "0.0.4",
+  "lastComment": "Update",
   "description": "Free One Page Bootstrap Template",
   "main": "app/index.html",
   "dependencies": {
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ScoopThemes/Bondy.git"
+    "url": "https://github.com/lab-241/appbase-website.git"
   },
   "author": "ScoopThemes",
   "license": "MIT"
