@@ -28,6 +28,7 @@ Build with [Scoop theme : Bondy](http://www.scoopthemes.com/templates/Bondy-Them
 + [Waypoint](https://github.com/imakewebthings/jquery-waypoints)
 + [unsplash](https://unsplash.com/)
 + [mockups](http://freebbble.com/)
++ [mockDrop](http://mockdrop.io/)
 
 ## MIT License
 

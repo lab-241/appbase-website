@@ -9,99 +9,100 @@
 
 var appMaster = {
 
-    preLoader: function(){
-        var imageSources = [];
-        $('img').each(function() {
-            var sources = $(this).attr('src');
-            imageSources.push(sources);
-        });
-        if($(imageSources).load()){
-            $('.pre-loader').fadeOut('slow');
+  preLoader: function(){
+    var imageSources = [];
+    $('img').each(function() {
+        var sources = $(this).attr('src');
+        imageSources.push(sources);
+    });
+    if($(imageSources).load()){
+        $('.pre-loader').fadeOut('slow');
+    }
+  },
+
+  navSpy: function(){
+    /* affix the navbar after scroll below header */
+    $('#nav.navbar-static-top').affix({
+        offset: {
+            top: $(window).height()
         }
-    },
+    });
 
-    navSpy: function(){
-        /* affix the navbar after scroll below header */
-        $('#nav.navbar-static-top').affix({
-            offset: {
-                top: $(window).height()
-            }
-        });
+    /* highlight the top nav as scrolling occurs */
+    $('body').scrollspy({
+        target: '#nav'
+    });
+  },
 
-        /* highlight the top nav as scrolling occurs */
-        $('body').scrollspy({
-            target: '#nav'
-        });
-    },
+  smoothScroll: function() {
+    // Smooth Scrolling
+    $('a[href*=#]:not([href=#carousel-example-generic], [href=#testimonials-carousel])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 
-    smoothScroll: function() {
-        // Smooth Scrolling
-        $('a[href*=#]:not([href=#carousel-example-generic], [href=#testimonials-carousel])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    },
-
-    scollToTop: function(){
-        /* smooth scrolling for scroll to top */
-        $('.scroll-top').click(function() {
-            $('body,html').animate({
-                scrollTop: 0
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+            $('html,body').animate({
+                scrollTop: target.offset().top
             }, 1000);
-        });
-    },
+            return false;
+        }
+      }
+    });
+  },
 
-    revSlider: function(){
+  scollToTop: function(){
+    /* smooth scrolling for scroll to top */
+    $('.scroll-top').click(function() {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1000);
+    });
+  },
 
-        var docHeight = $(window).height();
-        
-        var revapi;
-        revapi = jQuery('.tp-banner').revolution(
-        {
-            delay: 7000,
-            startwidth: 1170,
-            startheight: docHeight,
-            hideThumbs: 10,
-            fullWidth: "off",
-            fullScreen: "on",
-            onHoverStop: "off",
-            touchenabled:false,
-            fullScreenOffsetContainer: "",
-            navigationHAlign: "right",
-            navigationVAlign:"bottom",
-            navigationHOffset: 80,
-            navigationStyle:"square",
-            soloArrowLeftHalign:"left",
-            soloArrowLeftValign:"bottom",
-            soloArrowRightHalign:"left",
-            soloArrowRightValign:"bottom",
-            soloArrowLeftVOffset:55,
-            soloArrowRightVOffset:10,
-            dottedOverlay: 'none'
-        });
-    },
+  revSlider: function(){
 
-    stellar: function(){
-        $(window).stellar();
-    },
+    var docHeight = $(window).height();
 
-    skillsChart: function(){
-        $('.chart').easyPieChart({
-            animate: 2000,
-            size: 180,
-            lineWidth:10,
-            barColor: "#22a3df"
-        });
-    },
+    var revapi;
+    revapi = jQuery('.tp-banner').revolution(
+    {
+        delay: 7000,
+        startwidth: 1170,
+        startheight: docHeight,
+        hideThumbs: 10,
+        fullWidth: "off",
+        fullScreen: "on",
+        onHoverStop: "off",
+        touchenabled:false,
+        navigationArrows: "none",
+        fullScreenOffsetContainer: "",
+        navigationHAlign: "right",
+        navigationVAlign:"bottom",
+        navigationHOffset: 80,
+        navigationStyle:"square",
+        soloArrowLeftHalign:"left",
+        soloArrowLeftValign:"bottom",
+        soloArrowRightHalign:"left",
+        soloArrowRightValign:"bottom",
+        soloArrowLeftVOffset:55,
+        soloArrowRightVOffset:10,
+        dottedOverlay: 'none'
+    });
+  },
+
+  stellar: function(){
+    $(window).stellar();
+  },
+
+  skillsChart: function(){
+    $('.chart').easyPieChart({
+      animate: 2000,
+      size: 180,
+      lineWidth:10,
+      barColor: "#22a3df"
+    });
+  },
 
     maps: function(){
         // When the window has finished loading create our google map below
@@ -114,14 +115,14 @@ var appMaster = {
             var mapOptions = {
                 zoom: 13,
                 draggable: false,
-                zoomControl: true, 
+                zoomControl: true,
                 scrollwheel:false,
                 streetViewControl:false,
 
                 // The latitude and longitude to center the map (always required)
                 center: new google.maps.LatLng(40.869108,-73.892609), // New York
 
-                // How you would like to style the map. 
+                // How you would like to style the map.
                 // This is where you would paste any style found on Snazzy Maps.
                 styles: [
                     {
@@ -243,7 +244,7 @@ var appMaster = {
                 ]
             };
 
-            // Get the HTML DOM element that will contain your map 
+            // Get the HTML DOM element that will contain your map
             // We are using a div with id="map" seen below in the <body>
             var mapElement = document.getElementById('map');
 
@@ -289,83 +290,96 @@ var appMaster = {
     },
 
     animateScript: function() {
-        $('.scrollpoint.sp-effect1').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInLeft');},{offset:'100%'});
-       $('.scrollpoint.sp-effect2').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInRight');},{offset:'100%'});
-       $('.scrollpoint.sp-effect3').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInDown');},{offset:'100%'});
-       $('.scrollpoint.sp-effect4').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeIn');},{offset:'100%'});
-       $('.scrollpoint.sp-effect5').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInUp');},{offset:'100%'});
-       $('.scrollpoint.sp-effect6').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated bounceIn');},{offset:'100%'});
+      $('.scrollpoint.sp-effect1').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInLeft');},{offset:'100%'});
+      $('.scrollpoint.sp-effect2').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInRight');},{offset:'100%'});
+      $('.scrollpoint.sp-effect3').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInDown');},{offset:'100%'});
+      $('.scrollpoint.sp-effect4').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeIn');},{offset:'100%'});
+      $('.scrollpoint.sp-effect5').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated fadeInUp');},{offset:'100%'});
+      $('.scrollpoint.sp-effect6').waypoint(function(){$(this).toggleClass('active');$(this).toggleClass('animated bounceIn');},{offset:'100%'});
     },
 
     canvasHack: function(){
-        // so non-IE won't freak out in canvasInit
-        var G_vmlCanvasManager; 
+      // so non-IE won't freak out in canvasInit
+      var G_vmlCanvasManager;
 
-        function canvasInit() {
-            var cv = document.createElement('canvas');
-            if (G_vmlCanvasManager != undefined) { // ie IE
-                G_vmlCanvasManager.initElement(cv);
-            }
-
-            if (cv.getContext) {
-                var ctx = cv.getContext('2d');
-            }
+      function canvasInit() {
+        var cv = document.createElement('canvas');
+        if (G_vmlCanvasManager != undefined) { // ie IE
+            G_vmlCanvasManager.initElement(cv);
         }
+
+        if (cv.getContext) {
+            var ctx = cv.getContext('2d');
+        }
+      }
     },
 
-    ThemeSwitcher: function(){
-        $('.Switcher').on('click', function(){
-            $('.theme-switcher .colors').toggle('fast');
-            $(this).toggleClass('active');
-        });
-
-
-        var blueConfig = function(){
-            $('link[title=mainStyle]').attr('href', 'css/styles-blue.css');
-            $('.navbar-brand img').attr('src','img/logo-blue.png');
-            $('img.ipad-image').attr('src','img/samples/ipad-bl.png');
-            $('img.macbook-image').attr('src','img/samples/macbook-bl.png');
+    /* ----------------------------------------------------------- */
+    /*  7. WOW ANIMATION
+    /* ----------------------------------------------------------- */
+    wow: function(){
+      var wow = new WOW({
+        animateClass: 'animated',
+        offset: 100,
+        callback: function(box) {
+          //console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
         }
-        var orangeConfig = function(){
-            $('link[title=mainStyle]').attr('href', 'css/styles-orange.css');
-            $('.navbar-brand img').attr('src','img/logo-orange.png');
-            $('img.ipad-image').attr('src','img/samples/ipad-bl.png');
-            $('img.macbook-image').attr('src','img/samples/macbook-bl.png');
-        }
-        var redConfig = function(){
-            $('link[title=mainStyle]').attr('href', 'css/styles-red.css');
-            $('.navbar-brand img').attr('src','img/logo-red.png');
-            $('img.ipad-image').attr('src','img/samples/ipad-rd.png');
-            $('img.macbook-image').attr('src','img/samples/macbook-rd.png');
-        }
+      });
+      wow.init();
+    },
 
-        
-
-        $('.theme-switcher .colors a').on('click', function(){
-
-            var ThisColor = $(this).attr('class');
-
-            switch(ThisColor){
-                case 'blue':
-                    blueConfig();
-                    break;
-                case 'orange':
-                    orangeConfig();
-                    break;
-                case 'red':
-                    redConfig();
-                    break;
+    /* ----------------------------------------------------------- */
+    /*  3. SCREEN SLIDER (SLICK SLIDER)
+    /* ----------------------------------------------------------- */
+    slick: function(){
+      $('.screenshots-slide').slick({
+        dots: true,
+        infinite: true,
+        arrows:true,
+         centerMode: true,
+          centerPadding: '60px',
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: true
             }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    },
 
-        });
+    /* ----------------------------------------------------------- */
+    /*  4. FANCYBOX
+    /* ----------------------------------------------------------- */
+    fancybox: function(){
+      $(".fancybox").fancybox();
     }
-
 };
 
 
 $(document).ready(function() {
-
-    appMaster.scollToTop();
-    appMaster.ThemeSwitcher();
-
+  appMaster.scollToTop();
+  appMaster.slick();
 });
