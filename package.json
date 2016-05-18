@@ -1,7 +1,7 @@
 {
   "name": "appbase-website",
-  "version": "0.0.6",
-  "lastComment": "Update : Rebuild ui for App Base",
+  "version": "0.0.7",
+  "lastComment": "Update : Update content",
   "description": "App base website",
   "main": "app/index.html",
   "dependencies": {
