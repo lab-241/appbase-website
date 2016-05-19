@@ -24,11 +24,25 @@ module.exports = function(grunt) {
         command: 'git commit -m "<%= pkg.name %> - <%= pkg.lastComment %>"'
       },
       git_push: {
-        options: {
-            stdout: true
+      	options: {
+          stdout: true
         },
         command: 'git push'
-      }
+      },
+			git_deploy:{
+				options: {
+          stdout: true
+        },
+				command:[
+					'tempDir=`mktemp -d`',
+					'git clone -b gh-pages <%= pkg.repository %> $tempDir',
+					'cp -rT app $tempDir',
+					'cd $tempDir',
+					'git add -A',
+					'git commit -m "<%= pkg.name %>: <%= pkg.lastComment %>"',
+					'git push'
+				].join(' && ')
+			}
 		},
 		backup: {
 	    root_backup: {
@@ -91,6 +105,7 @@ module.exports = function(grunt) {
 
 	grunt.task.registerTask('default', ['connect','watch']);
 	grunt.task.registerTask('git', ['bumpup:patch','shell:git_add','shell:git_commit','shell:git_push']);
-	grunt.task.registerTask('deploy', ['sshexec:deploy']);
+	grunt.task.registerTask('gh-deploy', ['shell:git_deploy']);
+	grunt.task.registerTask('ssh-deploy', ['sshexec:deploy']);
 
 };
